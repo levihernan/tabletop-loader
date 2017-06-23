@@ -22,9 +22,9 @@ function init() {
   function showInfo(data, tabletop) {
     console.log(data);
     var dataset = data;
-    tablehtml = "<thead><tr><th>Fecha</th><th>Evento</th><th>Lugar</th><th>Mapa</th></tr></thead><tbody>"
+    tablehtml = "<thead><tr><th>Fecha</th><th>Lugar</th><th>Agenda</th></tr></thead><tbody>"
     for (var i = 0; i < dataset.length; i++) {
-      tablerow = "<tr><td>"+dataset[i].fecha+"</td><td>"+dataset[i].evento+"</td><td>"+dataset[i].lugar+"</td><td><a target='_blank' href='"+dataset[i].mapa+"'><i class='fa fa-map'></i></a></td></tr>" ;
+      tablerow = "<tr><td>"+dataset[i].fecha+"</td><td>"+dataset[i].lugar+"</td><td><a target='_blank' href='"+dataset[i].agenda+"'><i class='fa fa-file-text-o'></i></a></td></tr>" ;
       tablehtml += tablerow;}
       tablehtml += "</tbody>";
       $('.table').html(tablehtml);
