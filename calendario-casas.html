@@ -1,0 +1,34 @@
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="tabletop.js"></script>
+<table class="table">
+
+</table>
+
+<script type='text/javascript'>
+var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1O1AxjeTnYprhg7W1EOX4pvJPB102lAdsIErtue50Nho/pubhtml';
+
+function init() {
+  Tabletop.init( { key: publicSpreadsheetUrl,
+    callback: showInfo,
+    simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+    console.log(data);
+    var dataset = data;
+    tablehtml = "<thead><tr><th>Casa</th><th>Evento</th><th>Fecha</th><th>Horario</th><th>Mapa</th></tr></thead><tbody>"
+    for (var i = 0; i < dataset.length; i++) {
+      tablerow = "<tr><td>"+dataset[i].casa+"</td><td>"+dataset[i].evento+"</td><td>"+dataset[i].fecha+"</td><td>"+dataset[i].hora+"</td><td><a target='_blank' href='"+dataset[i].mapa+"'><i class='fa fa-map'></i></a></td></tr>" ;
+      tablehtml += tablerow;}
+      tablehtml += "</tbody>";
+      $('.table').html(tablehtml);
+    }
+
+    window.addEventListener('DOMContentLoaded', init)
+
+
+
+    </script>
