@@ -1,0 +1,37 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="poncho.css">
+<link rel="stylesheet" href="palta.css">
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script type="text/javascript" src="tabletop.js"></script>
+<table class="table">
+
+</table>
+
+<script type='text/javascript'>
+var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1859ToTcVq6hGvizxmQxVLxa7cTXYYiODZvKxoWSX5k4/pubhtml';
+
+function init() {
+Tabletop.init( { key: publicSpreadsheetUrl,
+                 callback: showInfo,
+                 simpleSheet: true } )
+}
+
+function showInfo(data, tabletop) {
+console.log(data);
+var dataset = data;
+tablehtml = "<thead><tr><th>Ciudad</th><th>Fecha</th><th>Horario</th><th>Ubicación</th></tr></thead><tbody>"
+for (var i = 0; i < dataset.length; i++) {
+  tablerow = "<tr><td>"+dataset[i].ciudad+"</td><td>"+dataset[i].fecha+"</td><td>"+dataset[i].horario+"</td><td>"+dataset[i].ubicacion+"</td></tr>" ;
+  tablehtml += tablerow;}
+tablehtml += "</tbody>";
+$('.table').html(tablehtml);
+}
+
+window.addEventListener('DOMContentLoaded', init)
+
+
+
+</script>
